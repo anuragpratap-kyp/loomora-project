@@ -1,5 +1,6 @@
 // --- API Base ---
-const API_BASE = localStorage.getItem('API_BASE') || 'http://localhost:5000/api';
+const API_BASE = localStorage.getItem('API_BASE') || "https://loomora-weav.onrender.com";
+';
 
 // --- Helpers ---
 const token = () => localStorage.getItem('token');

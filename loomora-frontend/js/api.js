@@ -3,55 +3,60 @@ const API_BASE = localStorage.getItem('API_BASE') || "https://loomora-weav.onren
 
 // --- Helpers ---
 const token = () => localStorage.getItem('token');
-const user  = () => JSON.parse(localStorage.getItem('user') || 'null');
+const user = () => JSON.parse(localStorage.getItem('user') || 'null');
 
+// GET request
 async function apiGet(path){
-  try{
+  try {
     const res = await fetch(API_BASE + path);
     return await res.json();
-  }catch(e){ console.error(e); return null; }
+  } catch(e) {
+    console.error(e);
+    return null;
+  }
 }
 
+// Auth request (login / register)
 async function apiAuth(path, body){
   const res = await fetch(API_BASE + path, {
     method:'POST',
-    headers:{'Content-Type':'application/json'},
+    headers:{ 'Content-Type':'application/json' },
     body: JSON.stringify(body)
   });
   return await res.json();
 }
 
+// Authenticated request (with token)
 async function apiAuthed(method, path, body){
   const res = await fetch(API_BASE + path, {
     method,
     headers:{
       'Content-Type':'application/json',
-      'Authorization': 'Bearer ' + token()
+      'Authorization':'Bearer ' + token()
     },
     body: body ? JSON.stringify(body) : undefined
   });
   return await res.json();
 }
 
-// UI helpers
+// Cart count helper
 function updateCartCount(){
-  const c = JSON.parse(localStorage.getItem('cart')||'[]');
+  const c = JSON.parse(localStorage.getItem('cart') || '[]');
   const el = document.getElementById('nav-cart-count');
-  if(el) el.textContent = c.reduce((s,i)=>s+i.qty,0);
+  if(el) el.textContent = c.reduce((t,v)=>t+v.qty,0);
 }
 
-function productCardHTML(p){
+// Product card renderer
+function productCardHtml(p){
   return `
-  <div class="card">
-    <img src="${p.image}" alt="${p.name}">
-    <div class="pad">
-      <h3>${p.name}</h3>
-      <div class="price">₹${p.price}</div>
-      <div class="muted" style="min-height:38px">${p.description.slice(0,60)}...</div>
-      <div style="margin-top:8px;display:flex;gap:8px">
-        <a class="btn" href="product.html?id=${p._id}">View</a>
-        <button class="btn" onclick='addToCart("${p._id}","${p.name.replace(/"/g,"&quot;")}","${p.image}",${p.price})'>Add</button>
+    <div class="card">
+      <div class="p-3">
+        <img src="${p.image}" alt="${p.name}">
+        <div>${p.name}</div>
+        <div>${p.price}</div>
+        <div class="text-sm text-muted">${p.description.slice(0,60)}</div>
+        <button class="btn" onclick="addToCart('${p._id}', '${p.name.replace(/'/g,'')}', '${p.image}', ${p.price})">Add</button>
       </div>
     </div>
-  </div>`;
+  `;
 }

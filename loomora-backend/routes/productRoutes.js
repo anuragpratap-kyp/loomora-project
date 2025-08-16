@@ -1,5 +1,5 @@
 import express from "express";
-import Product from "./models/Product.js";
+import Product from "../models/Product.js";
 import protect from "../middleware/authMiddleware.js";
 import admin from "../middleware/adminMiddleware.js";
 

@@ -47,7 +47,7 @@
   window.addEventListener('DOMContentLoaded', async () => {
     updateNavAuth();
     updateCartCount();
-    const products = await apiGet('/products');
+   const products = await apiGet('/api/products');
     const list = document.getElementById('featured-list');
     (products || []).slice(0, 6).forEach(p => list.insertAdjacentHTML('beforeend', productCardHTML(p)));
   });

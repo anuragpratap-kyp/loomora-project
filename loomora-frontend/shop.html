@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Loomora — Shop</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/api.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/products.js" defer></script>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-left">
+    <img src="images/logo.png" class="logo" alt="Loomora">
+    <a href="index.html" class="brand">Loomora</a>
+  </div>
+  <nav class="nav-links">
+    <a class="active" href="shop.html">Shop</a>
+    <a href="cart.html">Cart (<span id="nav-cart-count">0</span>)</a>
+    <span id="nav-auth"></span>
+  </nav>
+</header>
+
+<section class="container">
+  <div class="toolbar">
+    <input id="search" class="input" placeholder="Search products...">
+  </div>
+  <div id="product-list" class="grid"></div>
+</section>
+
+<script>
+  let all = [];
+  window.addEventListener('DOMContentLoaded', async () => {
+    updateNavAuth();
+    updateCartCount();
+    all = await apiGet('/products') || [];
+    renderList(all);
+    document.getElementById('search').addEventListener('input', (e)=>{
+      const q = e.target.value.toLowerCase();
+      renderList(all.filter(p => p.name.toLowerCase().includes(q)));
+    });
+  });
+  function renderList(arr){
+    const el = document.getElementById('product-list'); el.innerHTML='';
+    arr.forEach(p => el.insertAdjacentHTML('beforeend', productCardHTML(p)));
+  }
+</script>
+</body>
+</html>

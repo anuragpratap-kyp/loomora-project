@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Login • Loomora</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/api.js" defer></script>
+  <script src="js/auth.js" defer></script>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-left">
+    <img src="images/logo.png" class="logo"><a href="index.html" class="brand">Loomora</a>
+  </div>
+  <nav class="nav-links">
+    <a href="shop.html">Shop</a>
+    <a href="cart.html">Cart (<span id="nav-cart-count">0</span>)</a>
+    <span id="nav-auth"></span>
+  </nav>
+</header>
+
+<section class="container auth">
+  <h2>Login</h2>
+  <form id="login-form" class="form">
+    <input id="email" type="email" class="input" placeholder="Email" required>
+    <input id="password" type="password" class="input" placeholder="Password" required>
+    <button class="btn" type="submit">Login</button>
+  </form>
+  <p class="muted">New here? <a href="register.html">Create account</a></p>
+</section>
+</body>
+</html>

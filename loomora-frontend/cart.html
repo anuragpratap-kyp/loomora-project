@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cart • Loomora</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/api.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/cart.js" defer></script>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-left">
+    <img src="images/logo.png" class="logo"><a href="index.html" class="brand">Loomora</a>
+  </div>
+  <nav class="nav-links">
+    <a href="shop.html">Shop</a>
+    <a class="active" href="cart.html">Cart (<span id="nav-cart-count">0</span>)</a>
+    <span id="nav-auth"></span>
+  </nav>
+</header>
+
+<section class="container">
+  <h2>Your Cart</h2>
+  <div id="cart-items" class="list"></div>
+  <div class="cart-summary">
+    <div>Subtotal: ₹<span id="subtotal">0</span></div>
+    <a class="btn" href="checkout.html">Proceed to Checkout</a>
+  </div>
+</section>
+</body>
+</html>

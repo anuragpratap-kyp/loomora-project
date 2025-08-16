@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Checkout • Loomora</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/api.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/checkout.js" defer></script>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-left">
+    <img src="images/logo.png" class="logo"><a href="index.html" class="brand">Loomora</a>
+  </div>
+  <nav class="nav-links">
+    <a href="shop.html">Shop</a>
+    <a href="cart.html">Cart (<span id="nav-cart-count">0</span>)</a>
+    <span id="nav-auth"></span>
+  </nav>
+</header>
+
+<section class="container">
+  <h2>Checkout (COD)</h2>
+  <form id="checkout-form" class="form">
+    <input id="address" class="input" placeholder="Address" required>
+    <div class="grid-2">
+      <input id="city" class="input" placeholder="City" required>
+      <input id="postal" class="input" placeholder="Postal Code" required>
+    </div>
+    <input id="country" class="input" placeholder="Country" value="India" required>
+    <button class="btn" type="submit">Place Order (COD)</button>
+  </form>
+  <p id="note" class="muted">Note: You must be logged in to place order.</p>
+</section>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin • Loomora</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/api.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/admin.js" defer></script>
+</head>
+<body>
+<header class="nav">
+  <div class="nav-left">
+    <img src="images/logo.png" class="logo"><a href="index.html" class="brand">Loomora</a>
+  </div>
+  <nav class="nav-links">
+    <a href="shop.html">Shop</a>
+    <a href="cart.html">Cart (<span id="nav-cart-count">0</span>)</a>
+    <span id="nav-auth"></span>
+  </nav>
+</header>
+
+<section class="container">
+  <h2>Admin — Products</h2>
+  <form id="prod-form" class="form">
+    <input id="pid" type="hidden">
+    <input id="pname" class="input" placeholder="Name" required>
+    <input id="pimage" class="input" placeholder="Image URL" required>
+    <input id="pprice" type="number" class="input" placeholder="Price" required>
+    <input id="pstock" type="number" class="input" placeholder="Stock" required>
+    <textarea id="pdesc" class="input" placeholder="Description" required></textarea>
+    <button class="btn" type="submit">Save Product</button>
+  </form>
+
+  <div id="admin-list" class="list"></div>
+</section>
+</body>
+</html>

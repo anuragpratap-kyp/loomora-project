@@ -24,8 +24,7 @@ function updateNavAuth(){
 }
 
 // handle login/register forms
-document.addEventListener('DOMContentLoaded', ()=>{
-  updateNavAuth();
+document.addEventListener('DOMContentLoaded', ()=>{updateNavAuth();
 
   const lf = document.getElementById('login-form');
   if(lf){
